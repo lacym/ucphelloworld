@@ -1,0 +1,28 @@
+<module>
+	<rawname>ucphelloworld</rawname>
+	<repo>standard</repo>
+	<name>UCP Hello World</name>
+	<description>This is an example UCP application. It is meant as a reference tool and may or may not functionally do anything useful</description>
+	<category>Applications</category>
+	<version>13.0.1</version>
+	<publisher>Sangoma Technologies Corporation</publisher>
+	<license>GPLv3+</license>
+	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
+	<changelog>
+		*13.0.1* Initial release
+	</changelog>
+	<hooks>
+		<ucp class="Ucp">
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="constructModuleConfigPages">ucpConfigPage</method>
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="addUser">ucpAddUser</method>
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="updateUser">ucpUpdateUser</method>
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="delUser">ucpDelUser</method>
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="addGroup">ucpAddGroup</method>
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="updateGroup">ucpUpdateGroup</method>
+			<method namespace="FreePBX\Modules" class="Ucphelloworld" callingMethod="delGroup">ucpDelGroup</method>
+	</ucp>
+	</hooks>
+	<supported>
+		<version>13.0</version>
+	</supported>
+</module>
