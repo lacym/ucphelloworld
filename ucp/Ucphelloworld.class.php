@@ -82,6 +82,7 @@ class Ucphelloworld extends Modules{
   public function ajaxRequest($command,$settings){
     switch($command) {
       case 'hello':
+			case 'homeRefresh':
         return true;
       default:
         return false;
@@ -93,6 +94,10 @@ class Ucphelloworld extends Modules{
       case 'hello':
         return array("status" => true, "alert" => "success", "message" => _('HELLO UCP'));
       break;
+			case 'homeRefresh':
+			//when you hit refresh on the home page widget
+				return array("status" => true, "content" => '<h3>This is refreshing</h3>');
+			break;
       default:
         return array("status" => false, "message" => "");
       break;
