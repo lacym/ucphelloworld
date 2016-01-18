@@ -29,7 +29,8 @@ class Ucphelloworld extends Modules{
 
 	function __construct($Modules) {
 		$this->Modules = $Modules;
-		$this->enabled = $this->UCP->getCombinedSettingByID($user['id'],$this->module,'enabled');
+		$this->user = $this->UCP->User->getUser();
+		$this->enabled = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'enabled');
 	}
 	function getDisplay() {
 		return '<h1>Hello World</h1>';
