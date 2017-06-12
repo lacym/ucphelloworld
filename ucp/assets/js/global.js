@@ -4,6 +4,7 @@ var UcphelloworldC = UCPMC.extend({
 	 * class variables are declared in this method using 'this.variable'
 	 */
 	init: function(){
+		this.socket = null;
 		this.time = moment.utc().unix();
 		console.log('%c'+sprintf(_("Hello World has been loaded at %s"),UCP.dateTimeFormatter(this.time)),'background: #222; color: #bada55');
 		console.log('%c'+sprintf(_("Hello World has been loaded at %s"),UCP.timeFormatter(this.time)),'background: #222; color: #bada55');
@@ -130,7 +131,14 @@ var UcphelloworldC = UCPMC.extend({
 	 * @return  {mixed}      Data to send back to the PHP poll function for this module
 	 */
 	prepoll: function() {
-		return {key: 'value'}
+		var items = {};
+		$(".grid-stack-item[data-rawname=ucphelloworld][data-widget_type_id=poll]").each(function() {
+			var id = $(this).data("id");
+			if($(this).find(".number").length) {
+				items[id] = $(this).find(".number").text();
+			}
+		});
+		return items;
 	},
 	/**
 	 * Poll
@@ -140,8 +148,54 @@ var UcphelloworldC = UCPMC.extend({
 	 * @param  {mixed}      data    Data returned from the PHP poll function for this module
 	 */
 	poll: function(data){
+		$.each(data.items, function(id, value){
+			$(".grid-stack-item[data-id="+id+"] .number").text(value);
+		});
 		//$("#ucphelloworld-badge").text(data.total);
 		//$("#nav-btn-ucphelloworld .badge").text(data.total);
 		console.log('%c'+sprintf(_("Time since you started this session: %s"),UCP.humanDiff(this.time)),'background: #222; color: #bada55');
+	},
+	/**
+	 * Websocket Disconnect
+	 * @method
+	 */
+	disconnect: function() {
+		var $this = this,
+				listeners = [ "hello" ];
+		if (this.socket !== null) {
+			//remove all listeners so we don't get double binds on a reconnect
+			$.each(listeners, function(i, v) {
+				$this.socket.removeAllListeners(v);
+			});
+			this.subscribed = [];
+		}
+	},
+	/**
+	 * Websocket Connect
+	 * @method
+	 */
+	connect: function() {
+		var $this = this;
+		try {
+			//connect to the namespace we want to reach in UCP Node Server
+			UCP.wsconnect("ucphelloworld", function(socket) {
+				if (socket === false) {
+					$this.socket = null;
+					return false;
+				} else {
+					$this.socket = socket;
+				}
+
+				//emit our event
+				$this.socket.emit("hello", "");
+
+				//bind for a response
+				$this.socket.on("hello", function(response) {
+					console.log(response);
+				});
+			});
+		} catch(e) {
+
+		}
 	}
 });

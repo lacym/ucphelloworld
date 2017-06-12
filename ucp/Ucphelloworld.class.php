@@ -151,6 +151,18 @@ class Ucphelloworld extends Modules {
 			"maxsize" => array("height" => 4, "width" => 4), //The max size a widget can be when resized on the dashboard
 			"noresize" => false //If set to true the widget will not be allowed to be resized
 		);
+		//Individual Widgets
+		$widget['list']["poll"] = array(
+			"display" => _("Poll"), //Widget Subtitle
+			"description" => _("Poll Example"), //Widget description
+			"hasSettings" => true, //Set to true if this widget has settings. This will make the cog (gear) icon display on the widget display
+			"icon" => "fa fa-clock-o", //If set the widget in on the side bar will use this icon instead of the category icon,
+			"dynamic" => true, //If set to true then this widget can be added multiple times, if false then this widget can only be added once per dashboard!,
+			"defaultsize" => array("height" => 3, "width" => 3), //The default size of the widget when placed in the dashboard
+			"minsize" => array("height" => 2, "width" => 2), //The minimum size a widget can be when resized on the dashboard
+			"maxsize" => array("height" => 4, "width" => 4), //The max size a widget can be when resized on the dashboard
+			"noresize" => false //If set to true the widget will not be allowed to be resized
+		);
 		return $widget;
 	}
 
@@ -168,12 +180,12 @@ class Ucphelloworld extends Modules {
 		switch($id) {
 			case "whilma":
 				$displayvars = array(
-					"name" => "Whilma",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilma", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
 					'title' => _("Follow Me"),
@@ -182,12 +194,12 @@ class Ucphelloworld extends Modules {
 			break;
 			case "willy":
 				$displayvars = array(
-					"name" => "Whilly",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilly", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
 					'title' => _("Follow Me"),
@@ -211,51 +223,60 @@ class Ucphelloworld extends Modules {
 		switch($id) {
 			case "whilma":
 				$displayvars = array(
-					"name" => "Whilma",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilma", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
-					'title' => _("Follow Me"),
+					'title' => _("Whilma Module"),
 					'html' => $this->load_view(__DIR__.'/views/whilma.php',$displayvars)
 				);
 			break;
 			case "willy":
 				$displayvars = array(
-					"name" => "Whilly",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilly", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
-					'title' => _("Follow Me"),
+					'title' => _("Willy Module"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/willy.php',$displayvars)
 				);
 			break;
 			case "table":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Table"),
+					'title' => _("Table"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/table.php',$displayvars)
 				);
 			break;
 			case "toggle":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Toggle"),
+					'title' => _("Toggle"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/toggle.php',$displayvars)
 				);
 			break;
 			case "select":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Select"),
+					'title' => _("Select"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/select.php',$displayvars)
+				);
+			break;
+			case "poll":
+				$displayvars = array(
+					"number" => mt_rand(1,100)
+				);
+				$widget = array(
+					'title' => _("Poll"), //widget name
+					'html' => $this->load_view(__DIR__.'/views/poll.php',$displayvars)
 				);
 			break;
 		}
@@ -276,50 +297,50 @@ class Ucphelloworld extends Modules {
 		switch($id) {
 			case "whilma":
 				$displayvars = array(
-					"name" => "Whilma",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilma", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
-					'title' => _("Follow Me"),
+					'title' => _("Whilma Module"),
 					'html' => $this->load_view(__DIR__.'/views/whilma.php',$displayvars)
 				);
 			break;
 			case "willy":
 				$displayvars = array(
-					"name" => "Whilly",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilly", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
-					'title' => _("Follow Me"),
+					'title' => _("Whilly Module"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/willy.php',$displayvars)
 				);
 			break;
 			case "table":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Table"),
+					'title' => _("Table"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/table.php',$displayvars)
 				);
 			break;
 			case "toggle":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Toggle"),
+					'title' => _("Toggle"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/toggle.php',$displayvars)
 				);
 			break;
 			case "select":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Select"),
+					'title' => _("Select"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/select.php',$displayvars)
 				);
 			break;
@@ -341,50 +362,50 @@ class Ucphelloworld extends Modules {
 		switch($id) {
 			case "whilma":
 				$displayvars = array(
-					"name" => "Whilma",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilma", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
-					'title' => _("Follow Me"),
+					'title' => _("Follow Me"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/whilma.php',$displayvars)
 				);
 			break;
 			case "willy":
 				$displayvars = array(
-					"name" => "Whilly",
-					"timezone" => $this->UCP->View->getTimezone(),
-					"locale" => $this->UCP->View->getLocale(),
-					"date" => $this->UCP->View->getDate(time()),
-					"time" => $this->UCP->View->getTime(time()),
-					"datetime" => $this->UCP->View->getDateTime(time())
+					"name" => "Whilly", //widget name
+					"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+					"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+					"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+					"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+					"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 				);
 				$widget = array(
-					'title' => _("Follow Me"),
+					'title' => _("Follow Me"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/willy.php',$displayvars)
 				);
 			break;
 			case "table":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Table"),
+					'title' => _("Table"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/table.php',$displayvars)
 				);
 			break;
 			case "toggle":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Toggle"),
+					'title' => _("Toggle"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/toggle.php',$displayvars)
 				);
 			break;
 			case "select":
 				$displayvars = array();
 				$widget = array(
-					'title' => _("Select"),
+					'title' => _("Select"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/select.php',$displayvars)
 				);
 			break;
@@ -400,11 +421,11 @@ class Ucphelloworld extends Modules {
 	*/
 	function getUserSettingsDisplay() {
 		$displayvars = array(
-			"timezone" => $this->UCP->View->getTimezone(),
-			"locale" => $this->UCP->View->getLocale(),
-			"date" => $this->UCP->View->getDate(time()),
-			"time" => $this->UCP->View->getTime(time()),
-			"datetime" => $this->UCP->View->getDateTime(time())
+			"timezone" => $this->UCP->View->getTimezone(), //User's Timezone, set in User Manager
+			"locale" => $this->UCP->View->getLocale(), //User's Locale, set in User Manager
+			"date" => $this->UCP->View->getDate(time()), //User's Date, set in User Manager
+			"time" => $this->UCP->View->getTime(time()), //User's Time, set in User Manager
+			"datetime" => $this->UCP->View->getDateTime(time()) //User's Date/Time, set in User Manager
 		);
 		return array(
 			array(
@@ -424,8 +445,13 @@ class Ucphelloworld extends Modules {
 	 * @return mixed              Data you'd like to send back to the javascript for this module. See: https://wiki.freepbx.org/pages/viewpage.action?pageId=71271742#DevelopingforUCP14+-poll(Javascript)
 	 */
 	public function poll($data){
-		$count = mt_rand(1,42);
-		return array("status" => true, "total" => $count);
+		$items = array();
+		if(is_array($data)) {
+			foreach($data as $id => $value) {
+				$items[$id] = $value * 2;
+			}
+		}
+		return array("status" => true, "items" => $items);
 	}
 
 
