@@ -56,6 +56,7 @@ var UcphelloworldC = UCPMC.extend({
 	displayWidget: function(widget_id,dashboard_id) {
 		//jQuery Object
 		$(".grid-stack-item[data-id='"+widget_id+"']");
+		//ReactDOM.render(React.createElement(HelloWorld, { name: "Bryan" }), $(".grid-stack-item[data-id='"+widget_id+"'] .widget-content")[0]);
 	},
 	/**
 	 * Display Side Bar Widget

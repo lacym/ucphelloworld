@@ -163,6 +163,30 @@ class Ucphelloworld extends Modules {
 			"maxsize" => array("height" => 4, "width" => 4), //The max size a widget can be when resized on the dashboard
 			"noresize" => false //If set to true the widget will not be allowed to be resized
 		);
+		//Individual Widgets
+		$widget['list']["reactjs"] = array(
+			"display" => _("ReactJS"), //Widget Subtitle
+			"description" => _("ReactJS Example"), //Widget description
+			"hasSettings" => true, //Set to true if this widget has settings. This will make the cog (gear) icon display on the widget display
+			"icon" => "fa fa-smile-o", //If set the widget in on the side bar will use this icon instead of the category icon,
+			"dynamic" => true, //If set to true then this widget can be added multiple times, if false then this widget can only be added once per dashboard!,
+			"defaultsize" => array("height" => 11, "width" => 4), //The default size of the widget when placed in the dashboard
+			"minsize" => array("height" => 11, "width" => 4), //The minimum size a widget can be when resized on the dashboard
+			"noresize" => false, //If set to true the widget will not be allowed to be resized,
+			"reactjs" => true //reactjs, dont load any ajax html
+		);
+		//Individual Widgets
+		$widget['list']["tictactoe"] = array(
+			"display" => _("ReactJS TTT"), //Widget Subtitle
+			"description" => _("ReactJS Example"), //Widget description
+			"hasSettings" => true, //Set to true if this widget has settings. This will make the cog (gear) icon display on the widget display
+			"icon" => "fa fa-smile-o", //If set the widget in on the side bar will use this icon instead of the category icon,
+			"dynamic" => true, //If set to true then this widget can be added multiple times, if false then this widget can only be added once per dashboard!,
+			"defaultsize" => array("height" => 11, "width" => 4), //The default size of the widget when placed in the dashboard
+			"minsize" => array("height" => 11, "width" => 4), //The minimum size a widget can be when resized on the dashboard
+			"noresize" => false, //If set to true the widget will not be allowed to be resized,
+			"reactjs" => true //reactjs, dont load any ajax html
+		);
 		return $widget;
 	}
 
@@ -277,6 +301,12 @@ class Ucphelloworld extends Modules {
 				$widget = array(
 					'title' => _("Poll"), //widget name
 					'html' => $this->load_view(__DIR__.'/views/poll.php',$displayvars)
+				);
+			break;
+			case "reactjs":
+				$widget = array(
+					'title' => _("ReactJS"), //widget name
+					'html' => $this->load_view(__DIR__.'/views/reactjs.php',$displayvars)
 				);
 			break;
 		}
